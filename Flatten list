@@ -6,19 +6,15 @@ output: [1,'a','cat',2,3,'dog',4,5]
 
 
 # SOLUTION:
+input = [[1,'a',['cat'],2],[[[3]],'dog'],4,5]
+    
+def flatten_list(lst):
+    new_list = []
+    for item in lst:
+        if isinstance(item, list):
+            new_list.extend(flatten_list(item))
+        else:
+            new_list.append(item)
+    return new_list
 
-new_list = []
-
-for i in input:
-
-    if type(i) == list:
-
-        for j in i:
-
-            new_list.append(j)
-
-    else:
-
-        new_list.append(i)
-
-print(new_list)
+print(flatten_list(input))
